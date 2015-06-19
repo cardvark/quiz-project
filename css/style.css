@@ -1,0 +1,60 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+* {
+	border: 1px solid Chocolate;
+}
+
+.content {
+	width: 65rem;
+	background-color: white;
+	display: block;
+	margin: 0 auto;
+}
+
+.headerSection .content {
+	height: 4rem;
+	text-align: center;
+}
+
+.questionSpace {
+}
+
+.imageSpace {
+	display: inline-block;
+	width: 80%;
+	background-color: pink;
+	height: 25rem;
+	vertical-align: top;
+}
+
+.questionTextBlock {
+	display: inline-block;
+	width: 48%;
+	background-color: lightGray;
+	height: 20rem;
+}
+
+.questionTextSpace {
+	min-height: 5rem;
+}
+
+.answerBox {
+	height: 2rem;
+	transform-style: preserve-3d;
+}
+
+.answerBox div {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.feedbackTextBox {
+	height: 20rem;
+	display: inline-block;
+	vertical-align: top;
+	width: 48%;
+}
