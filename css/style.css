@@ -3,9 +3,17 @@ body {
 	padding: 0;
 }
 
-* {
+/* * {
 	border: 1px solid Chocolate;
 }
+
+div {
+	border: 1px solid blue;
+}
+
+span {
+	border: 1px solid green;
+} */
 
 .content {
 	width: 65rem;
@@ -14,47 +22,204 @@ body {
 	margin: 0 auto;
 }
 
+.mainSection .content {
+	background-color: #535353;
+}
+
 .headerSection .content {
 	height: 4rem;
 	text-align: center;
 }
 
 .questionSpace {
+	width: 85%;
+	min-width: 20rem;
+	margin: 0 auto;
+	height: 15rem;
 }
 
-.imageSpace {
-	display: inline-block;
-	width: 80%;
+.charSpace {
+	width: 85%;
 	background-color: pink;
-	height: 25rem;
-	vertical-align: top;
+
+	vertical-align: middle;
+	margin: 0 auto;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	text-align: center;
+	font-size: 3rem;
 }
 
-.questionTextBlock {
+
+.feedbackSpace {
+	height: 5rem;
+	width: 40%;
+	margin: 10px auto;
+
+}
+
+.feedbackTextBox {
+	font-size: 2em;
+	text-align: center;
+	border: 2px solid black;
+	background-color: lightgray;
+}
+
+.yesNoIcon, .yesNoText {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.yesNoIcon {
+	height: 35px;
+	width: 35px;
+}
+
+.yesNoText {
+
+}
+
+.submitButton {
+	width: 8rem;
+	margin: 3px auto;
+	border: 1px solid darkblue;
+	border-radius: 6px;
+	text-align: center;
+	vertical-align: center;
+	font-size: 1.5em;
+	padding: 0.1em;
+	color: white;
+	font-family: "courier new";
+	border-top: 1px solid #98f5c3;
+	background: #65d696;
+	background: -webkit-gradient(linear, left top, left bottom, from(#3e9c67), to(#094523));
+	background: -webkit-linear-gradient(top, #3e9c67, #094523);
+	background: -moz-linear-gradient(top, #3e9c67, #094523);
+	background: -ms-linear-gradient(top, #3e9c67, #094523);
+	background: -o-linear-gradient(top, #3e9c67, #094523);
+	-webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+	-moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+	box-shadow: rgba(0,0,0,1) 0 1px 0;
+	text-shadow: rgba(0,0,0,.4) 0 1px 0;
+}
+
+.submitButton:hover {
+	border-top-color: #287831;
+	background: #094523;
+	color: #ccc;
+	cursor: pointer;
+}
+
+.submitButton:active {
+	border-top-color: #063618;
+	background: #063618;
+}
+
+.nextButton {
+	width: 8rem;
+	margin: 3px auto;
+	border: 1px solid darkblue;
+	border-radius: 6px;
+	text-align: center;
+	vertical-align: center;
+	font-size: 1.5em;
+	padding: 0.1em;
+	color: white;
+	font-family: "courier new";
+	border-top: 1px solid #98f5c3;
+	background: #133a54;
+	background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#133a54));
+	background: -webkit-linear-gradient(top, #3e779d, #133a54);
+	background: -moz-linear-gradient(top, #3e779d, #133a54);
+	background: -ms-linear-gradient(top, #3e779d, #133a54);
+	background: -o-linear-gradient(top, #3e779d, #133a54);
+	-webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+	-moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+	box-shadow: rgba(0,0,0,1) 0 1px 0;
+	text-shadow: rgba(0,0,0,.4) 0 1px 0;
+}
+
+.nextButton:hover {
+	border-top-color: #133a54;
+	background: #133a54;
+	color: #ccc;
+	cursor: pointer;
+}
+
+.nextButton:active {
+	border-top-color: #0b2130;
+	background: #0b2130;
+}
+
+.answerSpace {
+	text-align: center;
+}
+
+.AnswerBlock {
 	display: inline-block;
 	width: 48%;
 	background-color: lightGray;
-	height: 20rem;
+	margin: 1rem auto;
+	border: 2px solid black;
+	margin-bottom: 1.5rem;
 }
 
-.questionTextSpace {
-	min-height: 5rem;
+.AnswerBlock ul {
+	list-style-type: none;
+	text-align: left;
 }
 
 .answerBox {
 	height: 2rem;
 	transform-style: preserve-3d;
+	padding: 10px;
+	margin: 10px;
+	border: 2px solid #121212;
+	background: #a8a8a8;
+	background: -webkit-gradient(linear, left top, left bottom, from(#595959), to(#a8a8a8));
+	background: -webkit-linear-gradient(top, #595959, #a8a8a8);
+	background: -moz-linear-gradient(top, #595959, #a8a8a8);
+	background: -ms-linear-gradient(top, #595959, #a8a8a8);
+	background: -o-linear-gradient(top, #595959, #a8a8a8);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+	-moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+	box-shadow: rgba(0,0,0,1) 0 1px 0;
+	text-shadow: rgba(0,0,0,.4) 0 1px 0;
+	color: white;
+	text-decoration: none;
+	vertical-align: middle;
+	margin-right: 3.1rem;
+}
+
+.answerItems .ui-selecting {
+	background: #189426;
+}
+
+.answerItems .ui-selected {
+	background: #189426;
+}
+
+.answerClicked {
+	background: #189426;
+}
+
+.answerBox:hover {
+	cursor: pointer;
+	background: #4ba654;
+}
+
+.answerBox:active {
+	background: #189426;
 }
 
 .answerBox div {
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
+	font-size: 2em;
 }
 
-.feedbackTextBox {
-	height: 20rem;
-	display: inline-block;
-	vertical-align: top;
-	width: 48%;
-}
