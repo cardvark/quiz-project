@@ -138,6 +138,8 @@ span {
 	-moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
 	box-shadow: rgba(0,0,0,1) 0 1px 0;
 	text-shadow: rgba(0,0,0,.4) 0 1px 0;
+	content: "Next";
+	display: none;
 }
 
 .nextButton:hover {
@@ -195,18 +197,22 @@ span {
 	margin-right: 3.1rem;
 }
 
-.answerItems .ui-selecting {
+.selectableItems .ui-selecting {
+	background: #189426;
+}
+
+.selectableItems .ui-selected {
+	background: #189426;
+}
+
+/* .answerItems .ui-selecting {
 	background: #189426;
 }
 
 .answerItems .ui-selected {
 	background: #189426;
 }
-
-.answerClicked {
-	background: #189426;
-}
-
+ */
 .answerBox:hover {
 	cursor: pointer;
 	background: #4ba654;
@@ -216,10 +222,8 @@ span {
 	background: #189426;
 }
 
-.answerBox div {
-	position: relative;
-	top: 50%;
-	transform: translateY(-50%);
+.answerBox {
 	font-size: 2em;
+	padding-left: 1em;
 }
 

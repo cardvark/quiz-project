@@ -6,12 +6,11 @@
 	<link rel="stylesheet" href="css/style.css">
 	<script src="http://code.jquery.com/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<script src="js/script.js"></script>	
+	<script type="text/javascript" charset="utf-8" src="js/script.js"></script>	
 </head>
 <body>
 	<header class="headerSection">
 		<div class="content">
-				你好！
 		</div>
 	</header>
 	<section class="mainSection">
@@ -25,43 +24,46 @@
 				<div class="feedbackTextBox">
 					<div class="yesNoIcon">X</div>
 					<div class="yesNoText">
-						Correct!
+						Select your answers.
 					</div>
 				</div>
 				<div id="mainButton" class="submitButton">
 					Submit
 				</div>
+				<div id="nextButton" class="nextButton">
+					Next
+				</div>
 			</div>
 			<div class="answerSpace">
 				<div class="AnswerBlock">
-					<ul class="answerItems">
-						<li class="answerBox">
-							<div id="pinyin1">Zhè shì shénme?</div>
+					<ul class="answerItems selectableItems" id="pinyinItems">
+						<li class="answerBox" id="pinyin0">
+							Zhè shì shénme?
 						</li>
-						<li class="answerBox">
-							<div id="pinyin2">Answer 2</div>
+						<li class="answerBox" id="pinyin1">
+							Answer 2
 						</li>
-						<li class="answerBox">
-							<div id="pinyin3">Answer 3</div>
+						<li class="answerBox" id="pinyin2">
+							Answer 3
 						</li>
-						<li class="answerBox">
-							<div id="pinyin4">Answer 4</div>
+						<li class="answerBox" id="pinyin3">
+							Answer 4
 						</li>
 					</ul>
 				</div>
 				<div class="AnswerBlock">
-					<ul class="answerItems">
-						<li class="answerBox">
-							<div id="english1">What is this?</div>
+					<ul class="answerItems selectableItems" id="englishItems">
+						<li class="answerBox" id="english0">
+							What is this?
 						</li>
-						<li class="answerBox">
-							<div id="english2">Answer 2</div>
+						<li class="answerBox" id="english1">
+							Answer2
 						</li>
-						<li class="answerBox">
-							<div id="english3">Answer 3</div>
+						<li class="answerBox" id="english2">
+							Answer3
 						</li>
-						<li class="answerBox">
-							<div id="english4">Answer 4</div>
+						<li class="answerBox" id="english3">
+							Answer4
 						</li>
 					</ul>
 				</div>
