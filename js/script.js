@@ -19,8 +19,6 @@ $(document).ready(function(){
 			$(".answerItems").toggleClass("selectableItems");
 
 			debug("Player guess: " + pinyinGuess + ", " + englishGuess);
-			debug("Correct answer: " + questionManager.questionList[questionManager.questionNum].correctPinyin + ", " + questionManager.questionList[questionManager.questionNum].correctEnglish);
-
 			questionManager.answerCheck(pinyinGuess, englishGuess, pinyinID, englishID);
 
 		} else {
@@ -30,7 +28,6 @@ $(document).ready(function(){
 	});
 
 	$("#nextButton").click(function(){
-		debug(questionManager.questionNum);
 		$(this).hide();
 		
 		$(".answerBox").siblings().removeClass("ui-selected");
@@ -44,8 +41,6 @@ $(document).ready(function(){
 			feedbackUpdate("Select your answers.");
 
 			questionManager.newQuestion(questionManager.questionList[questionManager.questionNum]);
-
-			debug(questionManager.questionNum);
 		} else {
 			feedbackUpdate ("All done! " + questionManager.questionPoints + "/" + questionManager.totalQuestions + " correct!");
 			$(".answerBox").html("^__^").css
@@ -83,18 +78,16 @@ function counterUpdate(count, total) {
 var questionManager = {
 	questionNum : 0,
 	questionPoints : 0,
-	questionList : loadQuestions(questionArr),
-	totalQuestions : loadQuestions(questionArr).length,
-
-	// cannot get this to work for the life of me...
-/*	totalQuestions : this.questionList.length,*/
+	totalQuestions : 5,
+	questionList : loadQuestions(questionArr, this.totalQuestions),
 
 	newQuestion : function(questionItem){
 		$("#pinyinItems").children().remove();
 		$("#englishItems").children().remove();
 		$(".charSpace").html(questionItem.chineseDisplay);
 
-		//Repeating the below - DRY function instead?
+		// Repeating the below - DRY function instead?
+		// perhaps function parameters for concatenating variables?  no idea...
 		questionItem.pinyinArr.forEach(function(pinyinWord, idx) {
 			$("#pinyinItems").append('\
 					<li class="answerBox" id="pinyin' + idx + '">' + pinyinWord + '</li>');
@@ -104,6 +97,8 @@ var questionManager = {
 			$("#englishItems").append('\
 					<li class="answerBox" id="english' + idx + '">' + englishWord + '</li>');
 		});
+
+		debug("Correct answer: " + questionManager.questionList[questionManager.questionNum].correctPinyin + ", " + questionManager.questionList[questionManager.questionNum].correctEnglish);
 
 		counterUpdate(this.questionNum + 1, this.totalQuestions);
 	},

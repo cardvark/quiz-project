@@ -118,9 +118,9 @@ opacity: 80%; */
 }
 
 .submitButton:hover {
-	border-top-color: #287831;
-	background: #094523;
-	color: #ccc;
+/* 	border-top-color: #287831;
+background: #094523;
+color: #ccc; */
 	cursor: pointer;
 }
 
@@ -156,9 +156,9 @@ opacity: 80%; */
 }
 
 .nextButton:hover {
-	border-top-color: #133a54;
-	background: #133a54;
-	color: #ccc;
+/* 	border-top-color: #133a54;
+background: #133a54;
+color: #ccc; */
 	cursor: pointer;
 }
 
