@@ -1,6 +1,9 @@
 body {
 	margin: 0;
 	padding: 0;
+	background-image: url(../images/falling-leaves.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 /* * {
@@ -13,57 +16,67 @@ div {
 
 span {
 	border: 1px solid green;
-} */
-
+}
+ */
 .content {
 	width: 65rem;
-	background-color: white;
 	display: block;
 	margin: 0 auto;
 }
 
 .mainSection .content {
-	background-color: #535353;
+/* 	background-color: #535353;
+opacity: 80%; */
 }
 
 .headerSection .content {
-	height: 4rem;
+	height: 2rem;
 	text-align: center;
 }
 
 .questionSpace {
-	width: 85%;
+	width: 40%;
 	min-width: 20rem;
 	margin: 0 auto;
 	height: 15rem;
 }
 
 .charSpace {
-	width: 85%;
-	background-color: pink;
-
+	width: 100%;
+	background: rgba(211, 211, 211, 0.5);
 	vertical-align: middle;
 	margin: 0 auto;
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
 	text-align: center;
-	font-size: 3rem;
+	font-size: 8rem;
+	border: 2px solid black;
 }
 
 
 .feedbackSpace {
 	height: 5rem;
 	width: 40%;
-	margin: 10px auto;
+	margin: 0 auto;
+	padding-bottom: 5rem;
+}
 
+.counterSpace {
+	font-size: 2em;
+	text-align: center;
+	border: 2px solid black;
+	background: rgba(211, 211, 211, 0.65);
+	width: 10rem;
+	margin: 10px auto;
 }
 
 .feedbackTextBox {
 	font-size: 2em;
 	text-align: center;
 	border: 2px solid black;
-	background-color: lightgray;
+	background: rgba(211, 211, 211, 0.65);
+	margin-bottom: 10px;
 }
 
 .yesNoIcon, .yesNoText {
@@ -161,10 +174,12 @@ span {
 .AnswerBlock {
 	display: inline-block;
 	width: 48%;
-	background-color: lightGray;
+	/* background-color: lightGray; */
+	background: rgba(211, 211, 211, 0.65);
 	margin: 1rem auto;
 	border: 2px solid black;
 	margin-bottom: 1.5rem;
+/* 	opacity: 0.65 */
 }
 
 .AnswerBlock ul {
@@ -173,6 +188,7 @@ span {
 }
 
 .answerBox {
+	opacity: 1.0;
 	height: 2rem;
 	transform-style: preserve-3d;
 	padding: 10px;
@@ -199,10 +215,23 @@ span {
 
 .selectableItems .ui-selecting {
 	background: #189426;
+	cursor: pointer;
 }
 
 .selectableItems .ui-selected {
 	background: #189426;
+	cursor: pointer;
+}
+
+.wrongItem {
+	background: red;
+}
+
+.correctItem {
+	outline: none;
+    border-color: #fafa00;
+    box-shadow: 0 0 10px #fafa00;
+    background: #189426;
 }
 
 /* .answerItems .ui-selecting {

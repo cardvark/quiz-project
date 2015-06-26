@@ -1,6 +1,4 @@
 $(document).ready(function(){
-/*	$(".answerItems").selectable();*/
-
 	$(".selectableItems").selectable();
 
 	$(".answerBox").click(function(){ 
@@ -13,17 +11,18 @@ $(document).ready(function(){
 		var pinyinID = $("#pinyinItems .ui-selected").attr("id");
 		var englishID = $("#englishItems .ui-selected").attr("id");
 
-		debug(pinyinGuess);
-		debug(englishGuess);
-		debug(pinyinID);
-		debug(englishID);
-
 		if (pinyinGuess && englishGuess) {
-			feedbackUpdate("Feedback");
+			/*feedbackUpdate("Feedback");*/
 			$(this).hide();
 			$("#nextButton").show();
 			$(".answerBox").siblings().removeClass("ui-selected");
 			$(".answerItems").toggleClass("selectableItems");
+
+			debug("Player guess: " + pinyinGuess + ", " + englishGuess);
+			debug("Correct answer: " + questionManager.questionList[questionManager.questionNum].correctPinyin + ", " + questionManager.questionList[questionManager.questionNum].correctEnglish);
+
+			questionManager.answerCheck(pinyinGuess, englishGuess, pinyinID, englishID);
+
 		} else {
 			feedbackUpdate("Select BOTH answers!");
 		}
@@ -31,11 +30,30 @@ $(document).ready(function(){
 	});
 
 	$("#nextButton").click(function(){
+		debug(questionManager.questionNum);
 		$(this).hide();
-		$("#mainButton").show();
+		
 		$(".answerBox").siblings().removeClass("ui-selected");
-		$(".answerItems").toggleClass("selectableItems");
+
+		$(".answerBox").removeClass("correctItem");
+		$(".answerBox").removeClass("wrongItem");
+
+		if (questionManager.totalQuestions > questionManager.questionNum) {
+			$("#mainButton").show();
+			$(".answerItems").toggleClass("selectableItems");
+			feedbackUpdate("Select your answers.");
+
+			questionManager.newQuestion(questionManager.questionList[questionManager.questionNum]);
+
+			debug(questionManager.questionNum);
+		} else {
+			feedbackUpdate ("All done! " + questionManager.questionPoints + "/" + questionManager.totalQuestions + " correct!");
+			$(".answerBox").html("^__^").css
+		}
+
 	});
+
+	questionManager.newQuestion(questionManager.questionList[questionManager.questionNum]);
 
 });
 
@@ -58,16 +76,63 @@ function playerAnswer(pinyinID, englishID, pinyinText, englishText) {
 	this.englishText = englishText || "default";
 }
 
-function questionObject(pinyinArr, englishArr, correctPinyin, correctEnglish, chineseDisplay) {
-	this.pinyinArr = pinyinArr || [];
-	this.englishArr = englishArr || [];
-	this.correctPinyin = correctPinyin || "text";
-	this.correctEnglish = correctEnglish || "text";
-	this.chineseDisplay = chineseDisplay || "中国话";
+function counterUpdate(count, total) {
+	$(".counterSpace").html(count + " of " + total);
 }
 
-var question1 = new questionObject(["Zhōngguó huà", "Wèishēngzhǐ", "Zìxíngchē", "Liúshuǐ"], ["Chinese words", "Toilet paper", "Bicycle", "Fire hose"], "Zìxíngchē", "Bicycle", "自行车");
+var questionManager = {
+	questionNum : 0,
+	questionPoints : 0,
+	questionList : loadQuestions(questionArr),
+	totalQuestions : loadQuestions(questionArr).length,
 
-function newQuestion(questionItem){
+	// cannot get this to work for the life of me...
+/*	totalQuestions : this.questionList.length,*/
+
+	newQuestion : function(questionItem){
+		$("#pinyinItems").children().remove();
+		$("#englishItems").children().remove();
+		$(".charSpace").html(questionItem.chineseDisplay);
+
+		//Repeating the below - DRY function instead?
+		questionItem.pinyinArr.forEach(function(pinyinWord, idx) {
+			$("#pinyinItems").append('\
+					<li class="answerBox" id="pinyin' + idx + '">' + pinyinWord + '</li>');
+		});
+
+		questionItem.englishArr.forEach(function(englishWord, idx) {
+			$("#englishItems").append('\
+					<li class="answerBox" id="english' + idx + '">' + englishWord + '</li>');
+		});
+
+		counterUpdate(this.questionNum + 1, this.totalQuestions);
+	},
+
+	answerCheck : function(pinyinGuess, englishGuess, pinyinID, englishID) {
+		var corrPin = this.questionList[this.questionNum].correctPinyin;
+		var corrEng = this.questionList[this.questionNum].correctEnglish;
 	
+		if (corrPin == pinyinGuess && corrEng == englishGuess) {
+			feedbackUpdate("That's right!");
+			this.questionPoints++;
+		} else if (corrPin != pinyinGuess && corrEng != englishGuess) {
+			feedbackUpdate("Totally wrong!");
+		} else {
+			feedbackUpdate("Close!");
+
+		}
+
+		$("#" + pinyinID).addClass("wrongItem");
+		$("#" + englishID).addClass("wrongItem");
+
+		$("#" + this.questionList[this.questionNum].pinyinID).addClass("correctItem");
+		
+		$("#" + this.questionList[this.questionNum].englishID).addClass("correctItem");
+
+		this.questionNum++;
+	}
+
 }
+/*
+var totalQuestions = questionManager.questionList.length;
+*/
