@@ -81,21 +81,20 @@ var questionManager = {
 	totalQuestions : 5,
 	questionList : loadQuestions(questionArr, this.totalQuestions),
 
+/*	questionList : loadQuestions(questionArr),
+	totalQuestions : this.questionList.length,*/
+
 	newQuestion : function(questionItem){
 		$("#pinyinItems").children().remove();
 		$("#englishItems").children().remove();
 		$(".charSpace").html(questionItem.chineseDisplay);
 
-		// Repeating the below - DRY function instead?
-		// perhaps function parameters for concatenating variables?  no idea...
-		questionItem.pinyinArr.forEach(function(pinyinWord, idx) {
-			$("#pinyinItems").append('\
-					<li class="answerBox" id="pinyin' + idx + '">' + pinyinWord + '</li>');
+		questionItem.pinyinArr.forEach(function(word, idx) {
+			appendBlock(word, idx, "pinyin");
 		});
 
-		questionItem.englishArr.forEach(function(englishWord, idx) {
-			$("#englishItems").append('\
-					<li class="answerBox" id="english' + idx + '">' + englishWord + '</li>');
+		questionItem.englishArr.forEach(function(word, idx) {
+			appendBlock(word, idx, "english");
 		});
 
 		debug("Correct answer: " + questionManager.questionList[questionManager.questionNum].correctPinyin + ", " + questionManager.questionList[questionManager.questionNum].correctEnglish);
@@ -128,6 +127,12 @@ var questionManager = {
 	}
 
 }
+
+appendBlock = function(word, idx, lang) {
+	$("#" + lang + "Items").append('\
+				<li class="answerBox" id="'+ lang + idx + '">' + word + '</li>');
+}
+
 /*
 var totalQuestions = questionManager.questionList.length;
 */
